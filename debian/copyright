@@ -1,0 +1,9 @@
+X-Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat
+X-Debianized-By: Olivier Langella <olivier.langella@moulon.inra.fr>
+X-Debianized-Date: Wed, 25 Jun 2008 11:18:51 +0200
+X-Source-Downloaded-From:
+X-Upstream-Author:
+
+Files: *
+Copyright: © 2008 Michel Zivy <zivy@moulon.inra.fr>, Olivier Langella <olivier.langella@moulon.inra.fr>
+License: CeCILL	   

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Beads
+Categories=Education;Science;Math;
+Comment=2-DE gel spot detection
+Comment[fr]=détection de spots sur des images de gels d'électrophorèse 2D
+Exec=qtbeads %U
+Icon=/usr/share/beads/beads_icon.svg
+Terminal=false
+Type=Application
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=beads

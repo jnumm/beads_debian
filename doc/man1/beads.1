@@ -1,0 +1,41 @@
+.TH BEADS 1 "2009 Dec 5" "Manual for beads"
+.SH NAME
+beads \- 2D gel electrophoresis spot detection
+
+.SH SYNOPSIS
+.B beads
+[\fI--inverse --steps -p parameter file\fR]... \fI-i INPUT \fI-o OUTPUT
+.br
+.SH DESCRIPTION
+.\" Add any additional description here
+.PP
+detect and quantify spots in INPUT gel image file.
+.TP
+\fB\-i\fR
+path to the gel image input file
+.TP
+\fB\-o\fR
+path to the output file
+.TP
+\fB\-p\fR, \fB\-\-param\fR
+path to the parameter file
+.TP
+\fB\-\-inverse\fR
+inverse pixel intensity in the source gel image, must be "true" or "false" ("true" by default)
+.TP
+\fB\-\-steps\fR
+save each image computed by beads at each step of the process into TIFF files. This option can be used to tune parameter file.
+.br
+.SH OUTPUT
+beads produces several files format as output: xml, txt, jpg, tif and svg. To choose the output file format, just write the corresponding extension in the output filename OUTPUT
+.br
+.SH AUTHORS
+beads was written by Michel Zivy <michel.zivy@moulon.inra.fr> and Olivier Langella <olivier.langella@moulon.inra.fr>.
+.br
+.SH COPYRIGHT
+Copyright CeCILL
+.br
+.SH SEE ALSO
+The beads homepage :
+.br
+http://pappso.inra.fr/bioinfo/beads/index.php

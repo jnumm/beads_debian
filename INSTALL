@@ -1,0 +1,13 @@
+
+requirements :
+on Ubuntu 7.10, before compilation, please install packages:
+libmagick++9-dev
+imagemagick
+build-essential
+cmake
+
+Compilation and installation :
+
+cmake .
+make
+make install

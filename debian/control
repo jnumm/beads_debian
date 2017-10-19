@@ -1,0 +1,15 @@
+Source: beads
+Section: science
+Priority: optional
+Maintainer: Olivier Langella <olivier.langella@moulon.inra.fr>
+Homepage: http://pappso.inra.fr/bioinfo/beads
+DM-Upload-Allowed: yes
+Uploaders: Olivier Langella <olivier.langella@moulon.inra.fr>
+Standards-Version: 1.0
+Build-Depends: debhelper (>= 5), cmake (>= 2), libx11-dev, libc6-dev,libqt4-dev (>= 4.5.2)
+
+Package: beads
+Architecture: any
+Depends: ${shlibs:Depends}, libx11-6, imagemagick,libqtgui4 (>= 4.5.2),libqt4-xml (>= 4.5.2),libqt4-svg (>= 4.5.2)
+Description: 2-DE electrophoresis gel image spot detection
+ 2-DE electrophoresis gel image spot detection
