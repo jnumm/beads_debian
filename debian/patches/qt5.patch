@@ -1,3 +1,7 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Thu, 19 Oct 2017 14:58:04 +0200
+Description: Port from Qt4 to Qt5
+
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -1,12 +1,13 @@
@@ -27,7 +31,7 @@
 +SUBDIRS (qtbeads)
 --- a/src/qtbeads/CMakeLists.txt
 +++ b/src/qtbeads/CMakeLists.txt
-@@ -1,7 +1,7 @@
+@@ -1,12 +1,12 @@
  
 - # this command finds Qt4 libraries and sets all required variables
 -  # note that it's Qt4, not QT4 or qt4
@@ -38,3 +42,18 @@
  
    
    # add some useful macros and variables
+   # (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
+-INCLUDE( ${QT_USE_FILE} )
++# INCLUDE( ${QT_USE_FILE} )
+ 
+ SET( BEADS_FOR_QT_CPP
+ 	../ConfigFile/ConfigFile
+@@ -80,7 +80,7 @@ ADD_DEFINITIONS( -Wall )
+ # Translation files
+ SET(GLOB TRANS translations/*.ts)
+ # add translations ...
+-QT4_ADD_TRANSLATION(QM ${TRANS})
++QT5_ADD_TRANSLATION(QM ${TRANS})
+ 
+ 
+ 
