@@ -1,0 +1,33 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ 
+- # this command finds Qt4 libraries and sets all required variables
+-  # note that it's Qt4, not QT4 or qt4
+-FIND_PACKAGE( Qt4 REQUIRED )
++ # this command finds Qt5 libraries and sets all required variables
++  # note that it's Qt5, not QT5 or qt5
++FIND_PACKAGE( Qt5 REQUIRED )
+ 
+   
+   # add some useful macros and variables
+@@ -65,4 +65,4 @@ ELSE(WIN32)
+ 	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} )
+ ENDIF(WIN32)
+ 
+-SUBDIRS (qtbeads)
+\ No newline at end of file
++SUBDIRS (qtbeads)
+--- a/src/qtbeads/CMakeLists.txt
++++ b/src/qtbeads/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ 
+- # this command finds Qt4 libraries and sets all required variables
+-  # note that it's Qt4, not QT4 or qt4
+-FIND_PACKAGE( Qt4 REQUIRED )
++ # this command finds Qt5 libraries and sets all required variables
++  # note that it's Qt5, not QT5 or qt5
++FIND_PACKAGE( Qt5 REQUIRED )
+ 
+   
+   # add some useful macros and variables

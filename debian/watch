@@ -1,0 +1,3 @@
+version=4
+
+http://pappso.inra.fr/bioinfo/beads/index.php .*/downloads/beads-@ANY_VERSION@@ARCHIVE_EXT@

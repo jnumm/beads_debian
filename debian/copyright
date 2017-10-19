@@ -1,9 +1,13 @@
-X-Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat
-X-Debianized-By: Olivier Langella <olivier.langella@moulon.inra.fr>
-X-Debianized-Date: Wed, 25 Jun 2008 11:18:51 +0200
-X-Source-Downloaded-From:
-X-Upstream-Author:
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: BEADS
+Upstream-Contact: Olivier Langella <olivier.langella@moulon.inra.fr>
+Source: http://pappso.inra.fr/bioinfo/beads/index.php
 
 Files: *
-Copyright: © 2008 Michel Zivy <zivy@moulon.inra.fr>, Olivier Langella <olivier.langella@moulon.inra.fr>
+Copyright: 2008-2010 Michel Zivy <zivy@moulon.inra.fr>, Olivier Langella <olivier.langella@moulon.inra.fr>
 License: CeCILL	   
+
+Files: debian/*
+Copyright: Andreas Tille <tille@debian.org>
+License: CeCILL
+
