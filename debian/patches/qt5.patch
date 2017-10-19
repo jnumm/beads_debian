@@ -1,17 +1,24 @@
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -1,7 +1,7 @@
+@@ -1,12 +1,13 @@
  
 - # this command finds Qt4 libraries and sets all required variables
 -  # note that it's Qt4, not QT4 or qt4
 -FIND_PACKAGE( Qt4 REQUIRED )
 + # this command finds Qt5 libraries and sets all required variables
 +  # note that it's Qt5, not QT5 or qt5
-+FIND_PACKAGE( Qt5 REQUIRED )
++FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Core Widgets)
  
    
    # add some useful macros and variables
-@@ -65,4 +65,4 @@ ELSE(WIN32)
+   # (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
+-INCLUDE( ${QT_USE_FILE} )
++# see https://stackoverflow.com/questions/28252909/cmake-and-qt5-include-only-takes-one-argument
++# INCLUDE( ${QT_USE_FILE} )
+ 
+ SET( BEADS_CPP
+ 	beads.cpp
+@@ -65,4 +66,4 @@ ELSE(WIN32)
  	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} )
  ENDIF(WIN32)
  
@@ -27,7 +34,7 @@
 -FIND_PACKAGE( Qt4 REQUIRED )
 + # this command finds Qt5 libraries and sets all required variables
 +  # note that it's Qt5, not QT5 or qt5
-+FIND_PACKAGE( Qt5 REQUIRED )
++FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Core Widgets)
  
    
    # add some useful macros and variables
