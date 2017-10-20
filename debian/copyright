@@ -2,6 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: BEADS
 Upstream-Contact: Olivier Langella <olivier.langella@moulon.inra.fr>
 Source: http://pappso.inra.fr/bioinfo/beads/index.php
+Files-Excluded: */CImg.h
 
 Files: *
 Copyright: 2008-2010 Michel Zivy <zivy@moulon.inra.fr>, Olivier Langella <olivier.langella@moulon.inra.fr>

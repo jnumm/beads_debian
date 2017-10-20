@@ -6,7 +6,8 @@ Priority: optional
 Build-Depends: debhelper (>= 10),
                cmake,
                qtbase5-dev,
-               qttools5-dev-tools
+               qttools5-dev-tools,
+               cimg-dev
 Standards-Version: 4.1.1
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-med/beads.git
 Vcs-Git: https://anonscm.debian.org/git/debian-med/beads.git
