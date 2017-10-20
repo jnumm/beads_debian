@@ -23,3 +23,26 @@ Description: Use Debian packaged CImg.h from cimg-dev package since
  ENDIF(WIN32)
  
  SUBDIRS (qtbeads)
+--- a/src/qtbeads/CMakeLists.txt
++++ b/src/qtbeads/CMakeLists.txt
+@@ -33,7 +33,6 @@ SET( BEADS_FOR_QT_CPP
+ 	../spot_document_gnumeric
+ 	../spotSvgDocument
+ 	../images/imageDeNovo
+-	../CImg
+ )
+   
+ # with SET() command you can change variables or define new ones
+--- a/src/images/imageCode.h
++++ b/src/images/imageCode.h
+@@ -3,8 +3,8 @@
+ 
+ #include "../config.h"
+ 
+-#include "../CImg.h"
+-//#include <CImg.h>
++//#include "../CImg.h"
++#include <CImg.h>
+ 
+ //Images pour lesquelles les valeurs des pixels sont des codes et non des valeurs quantitatives
+ //Sont des codes: l'image des directions, l'image des numeros
