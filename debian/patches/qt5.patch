@@ -42,7 +42,7 @@ Description: Port from Qt4 to Qt5
 -FIND_PACKAGE( Qt4 REQUIRED )
 + # this command finds Qt5 libraries and sets all required variables
 +  # note that it's Qt5, not QT5 or qt5
-+FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Core LinguistTools Widgets)
++FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Core LinguistTools PrintSupport Widgets)
  
    
    # add some useful macros and variables
@@ -83,7 +83,7 @@ Description: Port from Qt4 to Qt5
  	TARGET_LINK_LIBRARIES( qtbeads ${QT_LIBRARIES} ${EXTRA_CIMG_LIBRARY})
  ELSE(WIN32)
 -	TARGET_LINK_LIBRARIES( qtbeads ${QT_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY})
-+	TARGET_LINK_LIBRARIES( qtbeads Qt::Widgets m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY})
++	TARGET_LINK_LIBRARIES( qtbeads Qt5::Widgets Qt5::PrintSupport m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY})
  ENDIF(WIN32)
  
    
