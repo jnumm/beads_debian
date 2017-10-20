@@ -1,2 +1,3 @@
 qt5.patch
+qt5_headers.patch
 use_debian_packaged_cimg.h

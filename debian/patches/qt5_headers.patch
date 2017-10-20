@@ -1,0 +1,16 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Thu, 19 Oct 2017 14:58:04 +0200
+Description: Add missing headers
+
+--- a/src/qtbeads/main_window.cpp
++++ b/src/qtbeads/main_window.cpp
+@@ -10,6 +10,9 @@
+ #include <QMenu>
+ #include <QMenuBar>
+ #include <QFileDialog>
++#include <qlineedit.h>
++#include <qmessagebox.h>
++#include <qinputdialog.h>
+ #include "main_window.h"
+ #include "QCimg.h"
+ #include "../config.h"
