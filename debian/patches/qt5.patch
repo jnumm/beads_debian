@@ -22,8 +22,12 @@ Description: Port from Qt4 to Qt5
  
  SET( BEADS_CPP
  	beads.cpp
-@@ -65,4 +66,4 @@ ELSE(WIN32)
- 	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} )
+@@ -62,7 +63,7 @@ IF(WIN32)
+ 	target_link_libraries (beads ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} )
+ ELSE(WIN32)
+ 	 # Link the executable to the Hello library.
+-	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} )
++	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} Qt5::Core Qt5::Widgets )
  ENDIF(WIN32)
  
 -SUBDIRS (qtbeads)
