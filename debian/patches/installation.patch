@@ -1,0 +1,18 @@
+Author: Juhani Numminen <juhaninumminen0@gmail.com>
+Last-Update: 2017-10-21
+Description: CMakeFiles.txt assumed in-source build
+ but we are using separate build directory.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -186,8 +186,8 @@
+ # the project's entire directory structure.
+ SUBDIRS (src)
+ 
+-INSTALL(PROGRAMS src/beads DESTINATION bin)
+-INSTALL(PROGRAMS src/qtbeads/qtbeads DESTINATION bin)
++INSTALL(PROGRAMS "${CMAKE_BINARY_DIR}/src/beads" DESTINATION bin)
++INSTALL(PROGRAMS "${CMAKE_BINARY_DIR}/src/qtbeads/qtbeads" DESTINATION bin)
+ #INSTALL(DIRECTORY doc/man1 DESTINATION share/man/man1)
+ INSTALL(FILES doc/man1/beads.1 DESTINATION share/man/man1)
+ INSTALL(FILES share/applications/beads.desktop DESTINATION share/applications)
