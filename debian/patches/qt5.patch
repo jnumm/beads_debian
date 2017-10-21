@@ -4,30 +4,28 @@ Description: Port from Qt4 to Qt5
 
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -1,12 +1,13 @@
+@@ -1,12 +1,7 @@
  
 - # this command finds Qt4 libraries and sets all required variables
 -  # note that it's Qt4, not QT4 or qt4
 -FIND_PACKAGE( Qt4 REQUIRED )
+-
+-  
+-  # add some useful macros and variables
+-  # (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
+-INCLUDE( ${QT_USE_FILE} )
 + # this command finds Qt5 libraries and sets all required variables
 +  # note that it's Qt5, not QT5 or qt5
-+FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Core LinguistTools Widgets)
- 
-   
-   # add some useful macros and variables
-   # (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
--INCLUDE( ${QT_USE_FILE} )
-+# see https://stackoverflow.com/questions/28252909/cmake-and-qt5-include-only-takes-one-argument
-+# INCLUDE( ${QT_USE_FILE} )
++FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Widgets LinguistTools )
  
  SET( BEADS_CPP
  	beads.cpp
-@@ -62,7 +63,7 @@ IF(WIN32)
+@@ -62,7 +57,7 @@
  	target_link_libraries (beads ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} )
  ELSE(WIN32)
  	 # Link the executable to the Hello library.
 -	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} )
-+	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} ${QT_LIBRARIES} Qt5::Core Qt5::Widgets )
++	target_link_libraries (beads ${X11_LIBRARIES} m ${PTHREADS_LIBRARY} ${EXTRA_CIMG_LIBRARY} Qt5::Widgets )
  ENDIF(WIN32)
  
 -SUBDIRS (qtbeads)
@@ -35,24 +33,36 @@ Description: Port from Qt4 to Qt5
 +SUBDIRS (qtbeads)
 --- a/src/qtbeads/CMakeLists.txt
 +++ b/src/qtbeads/CMakeLists.txt
-@@ -1,12 +1,12 @@
+@@ -1,12 +1,9 @@
  
 - # this command finds Qt4 libraries and sets all required variables
 -  # note that it's Qt4, not QT4 or qt4
 -FIND_PACKAGE( Qt4 REQUIRED )
 + # this command finds Qt5 libraries and sets all required variables
 +  # note that it's Qt5, not QT5 or qt5
-+FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Core LinguistTools PrintSupport Widgets)
++FIND_PACKAGE( Qt5 REQUIRED COMPONENTS Widgets PrintSupport LinguistTools )
  
-   
-   # add some useful macros and variables
-   # (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
+-  
+-  # add some useful macros and variables
+-  # (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
 -INCLUDE( ${QT_USE_FILE} )
-+# INCLUDE( ${QT_USE_FILE} )
++SET(CMAKE_AUTOMOC ON)
  
  SET( BEADS_FOR_QT_CPP
  	../ConfigFile/ConfigFile
-@@ -80,7 +80,7 @@ ADD_DEFINITIONS( -Wall )
+@@ -47,11 +44,6 @@
+ 	QCimg.cpp
+ 	q_gel_image.cpp
+ 	q_gel_image_scroll.cpp
+-#	qtbeads_error.h
+-)
+-  
+-  # another list, this time it includes all header files that should be treated with moc
+-SET( QTBEADS_MOC_HDRS
+ 	main_window.h
+ 	q_gel_image.h
+ )  
+@@ -80,7 +72,7 @@
  # Translation files
  SET(GLOB TRANS translations/*.ts)
  # add translations ...
@@ -61,24 +71,34 @@ Description: Port from Qt4 to Qt5
  
  
  
-@@ -94,13 +94,13 @@ QT4_ADD_TRANSLATION(QM ${TRANS})
+@@ -90,25 +82,13 @@
+ 
+ #FIND_PACKAGE(Qwt5 REQUIRED) 
    
-   # this command will generate rules that will run rcc on all files from SAMPLE_RCS
-   # in result SAMPLE_RC_SRCS variable will contain paths to files produced by rcc
+-  
+-  
+-  # this command will generate rules that will run rcc on all files from SAMPLE_RCS
+-  # in result SAMPLE_RC_SRCS variable will contain paths to files produced by rcc
 -QT4_ADD_RESOURCES( QTBEADS_SRCS ${SAMPLE_RCS} )
-+QT5_ADD_RESOURCES( QTBEADS_SRCS ${SAMPLE_RCS} )
-   
-   # this will run uic on .ui files:
+-  
+-  # this will run uic on .ui files:
 -  #QT4_WRAP_UI( SAMPLE_UI_HDRS ${SAMPLE_UIS} )
-+  #QT5_WRAP_UI( SAMPLE_UI_HDRS ${SAMPLE_UIS} )
-   
-   # and finally this will run moc:
+-  
+-  # and finally this will run moc:
 -QT4_WRAP_CPP( QTBEADS_MOC_SRCS ${QTBEADS_MOC_HDRS} )
-+QT5_WRAP_CPP( QTBEADS_MOC_SRCS ${QTBEADS_MOC_HDRS} )
-   
+-  
    # we need this to be able to include headers produced by uic in our code
    # (CMAKE_BINARY_DIR holds a path to the build directory, while INCLUDE_DIRECTORIES() works just like INCLUDEPATH from qmake)
-@@ -118,7 +118,7 @@ ADD_EXECUTABLE( qtbeads ${BEADS_FOR_QT_C
+   #INCLUDE_DIRECTORIES( ${CMAKE_BINARY_DIR} ${Qwt5_INCLUDE_DIR})
+ INCLUDE_DIRECTORIES( ${CMAKE_BINARY_DIR})
+   
+   # here we instruct CMake to build "sample" executable from all of the source files
+-ADD_EXECUTABLE( qtbeads ${BEADS_FOR_QT_CPP} ${QTBEADS_SRCS} ${QTBEADS_MOC_SRCS} ${SAMPLE_RC_SRCS} ${SAMPLE_UI_HDRS} ${QM} )
++ADD_EXECUTABLE( qtbeads ${BEADS_FOR_QT_CPP} ${QTBEADS_SRCS} ${QM} )
+ 
+ 
+   # last thing we have to do is to tell CMake what libraries our executable needs,
+@@ -118,7 +98,7 @@
  IF(WIN32)
  	TARGET_LINK_LIBRARIES( qtbeads ${QT_LIBRARIES} ${EXTRA_CIMG_LIBRARY})
  ELSE(WIN32)
