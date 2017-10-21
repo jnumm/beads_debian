@@ -1,0 +1,25 @@
+Author: Juhani Numminen <juhaninumminen0@gmail.com>
+Last-Update: 2017-10-21
+Description: Remove unusual statements, which gets rid of rpath.
+ There is no directory with the literal name X11_INCLUDE_DIR.
+ The other statement added -L/usr/include which is not correct.
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -34,7 +34,6 @@
+ ELSE(WIN32)
+ 	FIND_PACKAGE(X11 REQUIRED)
+ 	
+-	INCLUDE_DIRECTORIES(X11_INCLUDE_DIR)
+ 	# X11_FOUND is true if X11 is available.
+ 	#    * X11_INCLUDE_DIR contains the include directories to use X11.
+ 	#    * X11_LIBRARIES points to the libraries to link against to use X11.
+@@ -44,8 +43,6 @@
+ 	ADD_DEFINITIONS(${PTHREADS_DEFINITIONS})
+ 	# -m -pthread FindThreads
+ 	
+-	# Make sure the linker can find the Hello library once it is built.
+-	link_directories (${X11_INCLUDE_DIR})
+ ENDIF(WIN32)
+ 
+ 
