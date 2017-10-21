@@ -4,13 +4,16 @@ Description: Add missing headers
 
 --- a/src/qtbeads/main_window.cpp
 +++ b/src/qtbeads/main_window.cpp
-@@ -10,6 +10,9 @@
+@@ -10,6 +10,12 @@
  #include <QMenu>
  #include <QMenuBar>
  #include <QFileDialog>
 +#include <qlineedit.h>
 +#include <qmessagebox.h>
 +#include <qinputdialog.h>
++#include <qstatusbar.h>
++#include <qprintdialog.h>
++#include <qfontdialog.h>
  #include "main_window.h"
  #include "QCimg.h"
  #include "../config.h"
